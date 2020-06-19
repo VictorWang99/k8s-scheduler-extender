@@ -15,7 +15,7 @@ func podFitsOnNode(pod *v1.Pod, node v1.Node) (bool, []string, error) {
 }
 ```
 ### priorities.go
-在这里对每个通过了过滤的node进行打分，分数是10以内的随机数。
+在这里对每个通过了过滤的node进行打分，分数是node所在位置下标乘10以内的随机数与最大允许分数两者的较小值。
 ```
 func prioritize(args schedulerapi.ExtenderArgs) *schedulerapi.HostPriorityList {
 	pod := args.Pod
