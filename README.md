@@ -1,5 +1,5 @@
-#Scheduler-extender <br>
-###predicates.go <br>
+# Scheduler-extender <br>
+### predicates.go <br>
 在这里实现过滤方法，对于每个node，通过podFitsOnNode()函数判断pod能否在该node上运行。这里podFitsOnNode实现的逻辑是，在10以内取随机数，若随机数小于7，则通过，否则不通过。也就是说，每个node有70%的概率通过。
 ```
 func podFitsOnNode(pod *v1.Pod, node v1.Node) (bool, []string, error) {
@@ -14,7 +14,7 @@ func podFitsOnNode(pod *v1.Pod, node v1.Node) (bool, []string, error) {
 	return true, failReasons, nil
 }
 ```
-###priorities.go
+### priorities.go
 在这里对每个通过了过滤的node进行打分，分数是10以内的随机数。
 ```
 func prioritize(args schedulerapi.ExtenderArgs) *schedulerapi.HostPriorityList {
